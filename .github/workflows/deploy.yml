@@ -35,8 +35,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "github-actions[bot]""
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy to GitHub Pages
         env:
@@ -46,5 +46,5 @@ jobs:
           git init
           git add -A
           git commit -m "Create by workflows"
-          git remote add origin https://${{ secrets.hexo_token }}@github.com/Shana-wen/Shana-wen.github.io.git
+          git remote add origin https://${{ secrets.hexo }}@github.com/Shana-wen/Shana-wen.github.io.git
           git push origin HEAD:gh-pages -f
