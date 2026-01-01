@@ -4,7 +4,7 @@ description: C/C++
 keywords: C/C++
 author: Shana-wen
 language: zh-CN
-timezone: ''
+timezone: 'Asia/Shanghai'
 url: https://shana-wen.github.io/
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
@@ -29,6 +29,9 @@ external_link:
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
