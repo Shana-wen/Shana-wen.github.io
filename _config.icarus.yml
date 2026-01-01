@@ -167,7 +167,7 @@ search:
 comment:
     type: disqus
     # Disqus shortname
-    shortname: 'noen'
+    shortname: 'none'
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 # donates:
