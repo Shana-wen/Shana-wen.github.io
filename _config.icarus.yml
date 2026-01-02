@@ -3,11 +3,11 @@ version: 5.1.0
 # Icarus theme variant, can be "default" or "cyberpunk"
 variant: default
 # Path or URL to the website's logo
-logo: /img/logo.svg
+logo: /img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png
 # Page metadata configurations
 head:
     # URL or path to the website's icon
-    favicon: /img/favicon.svg
+    favicon: /img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png
     # Web application manifests configuration
     # https://developer.mozilla.org/en-US/docs/Web/Manifest
     manifest:
@@ -235,7 +235,7 @@ widgets:
         # Author's current location
         location: local
         # URL or path to the avatar image
-        avatar: /img/Shakugan_no_Shana_Badge_014.png
+        avatar: /img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png
         # Whether show the rounded avatar image
         avatar_rounded: false
         # Email address for the Gravatar
