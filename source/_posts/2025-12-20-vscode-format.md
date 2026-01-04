@@ -1,11 +1,11 @@
 ---
-layout: '[layout]'
 title: Visual Studio Code 格式化
 date: 2025-12-20 16:55:50
-tags: vscode
+tags: VSCode
+categories: 开发环境配置
+toc: true
 excerpt: Visual Studio Code 格式化相关配置
 ---
-
 # 安装插件
 ## Doxygen Documentation Generator
 在Doxygen Documentation Generator设置中打开`settings.json`,添加以下配置：

@@ -1,9 +1,10 @@
 ---
-layout: '[layout]'
 title: 在右键菜单中添加Visual Studio Code
 date: 2025-12-20 15:18:04
-tags: vscode
-excerpt: 记录C语言相关的笔记
+tags: VSCode
+categories: 开发环境配置
+toc: true
+excerpt: 修改Win10注册表，实现在右键菜单中添加Visual Studio Code
 ---
 # Win10 在右键菜单中添加Visual Studio Code
 1. `Win+R`，输入`regedit`，打开注册表。
