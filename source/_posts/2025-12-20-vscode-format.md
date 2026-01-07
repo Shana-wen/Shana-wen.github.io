@@ -15,6 +15,7 @@ excerpt: Visual Studio Code 格式化相关配置
     "editor.formatOnSave": true,
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.formatting": "vcFormat",
+    "C_Cpp.vcFormat.newLine.beforeElse": false,
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.block": "sameLine",
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.function": "sameLine",
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
