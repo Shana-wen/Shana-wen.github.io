@@ -1,7 +1,7 @@
 ---
 title: Real-ESRGAN 动漫插图/视频修复算法
 date: 2025-3-22 10:31:22
-tags: ffmpeg, ACG
+tags: ['FFmpeg', 'ACG']
 categories: 图像处理
 toc: true
 excerpt: 介绍 Real-ESRGAN（动漫插图/视频修复算法）
@@ -10,7 +10,7 @@ excerpt: 介绍 Real-ESRGAN（动漫插图/视频修复算法）
 ## 动漫插图高清修复
 1. Command:
 ```bash
-realesrgan-ncnn-vulkan.exe -i ./input/.jpg -o ./output/.png -n realesr-animevideov3
+./realesrgan-ncnn-vulkan.exe -i ./input/img.jpg -o ./output/img.png -n realesr-animevideov3
 
 realesr-animevideov3 (default，针对动漫视频)
 realesrgan-x4plus
@@ -36,7 +36,9 @@ realesrgan-ncnn-vulkan.exe -i 输入路径 -o 输出路径 [选项]...
 ## 动漫视频高清修复
 1. 使用 ffmpeg 从视频中提取帧，记得提前创建文件夹tmp_frames
 ```bash
-ffmpeg -i onepiece_demo.mp4 -qscale:v 1 -qmin 1 -qmax 1 -vsync 0 tmp_frames/frame%08d.png
+#ffmpeg -i onepiece_demo.mp4 -qscale:v 1 -qmin 1 -qmax 1 -vsync 0 tmp_frames/frame%08d.png
+#-vsync 参数已被弃用，-vsync 0 -> -fps_mode passthrough（保持原始时间戳）
+ffmpeg -i onepiece_demo.mp4 -qscale:v 1 -qmin 1 -qmax 1 -fps_mode passthrough tmp_frames/frame%08d.png
 ```
 2. 使用 Real-ESRGAN，记得提前创建文件夹out_frames
 ```bash
