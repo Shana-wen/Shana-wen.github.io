@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Zephyr笔记 - 命运的十字路口</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="命运的十字路口"><meta name="msapplication-TileImage" content="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="命运的十字路口"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="记录Zephyr相关的笔记"><meta property="og:type" content="blog"><meta property="og:title" content="Zephyr笔记"><meta property="og:url" content="https://shana-wen.github.io/2026/04/23/2026-04-23-Zephyr/"><meta property="og:site_name" content="命运的十字路口"><meta property="og:description" content="记录Zephyr相关的笔记"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://shana-wen.github.io/img/og_image.png"><meta property="article:published_time" content="2026-04-23T12:14:58.000Z"><meta property="article:modified_time" content="2026-05-01T14:28:05.306Z"><meta property="article:author" content="Shana-wen"><meta property="article:tag" content="Kernel"><meta property="article:tag" content="Zephyr"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://shana-wen.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shana-wen.github.io/2026/04/23/2026-04-23-Zephyr/"},"headline":"Zephyr笔记","image":["https://shana-wen.github.io/img/og_image.png"],"datePublished":"2026-04-23T12:14:58.000Z","dateModified":"2026-05-01T14:28:05.306Z","author":{"@type":"Person","name":"Shana-wen"},"publisher":{"@type":"Organization","name":"命运的十字路口","logo":{"@type":"ImageObject","url":"https://shana-wen.github.io/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"}},"description":"记录Zephyr相关的笔记"}</script><link rel="canonical" href="https://shana-wen.github.io/2026/04/23/2026-04-23-Zephyr/"><link rel="icon" href="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png" alt="命运的十字路口" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Shana-wen/Shana-wen.github.io.git"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2026-04-23T12:14:58.000Z" title="4/23/2026, 12:14:58 PM">2026-04-23</time>发表</span><span class="level-item"><time dateTime="2026-05-01T14:28:05.306Z" title="5/1/2026, 2:28:05 PM">2026-05-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></span><span class="level-item">8 分钟读完 (大约1267个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">Zephyr笔记</h1><div class="content"><h1 id="基于Zephyr的嵌入式系统工程目录结构"><a href="#基于Zephyr的嵌入式系统工程目录结构" class="headerlink" title="基于Zephyr的嵌入式系统工程目录结构"></a>基于Zephyr的嵌入式系统工程目录结构</h1><h2 id="项目概述"><a href="#项目概述" class="headerlink" title="项目概述"></a>项目概述</h2><p>这是一个基于 <strong>Zephyr</strong> 的嵌入式系统项目。</p>
+<h2 id="SDK主要目录结构"><a href="#SDK主要目录结构" class="headerlink" title="SDK主要目录结构"></a>SDK主要目录结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">├── arch/</span><br><span class="line">│   └── mips/</span><br><span class="line">│       └── soc/</span><br><span class="line">│           └── actions/</span><br><span class="line">│               └── woodpecker/ # Actions ATS285x系列soc支持目录</span><br><span class="line">├── boards/</span><br><span class="line">│   └── mips/</span><br><span class="line">│       └── ats2853_dvb/        # ATS2853 DVB 版型配置和代码</span><br><span class="line">├── drivers/                    # 各个驱动程序</span><br><span class="line">├── ext/</span><br><span class="line">│   └── actions/                # Actions应用框架</span><br><span class="line">├── include/                    # Zephyr原生include</span><br><span class="line">├── kernel/                     # 内核代码</span><br><span class="line">├── samples/</span><br><span class="line">│   └── bt_box/                 # 蓝牙音箱示例应用</span><br><span class="line">├── scripts/                    # 构建和工具脚本</span><br><span class="line">│   └── support/</span><br><span class="line">│       └── actions/            # 打包和量产脚本</span><br><span class="line">├── subsys/                     # 文件系统等硬件无关子系统</span><br></pre></td></tr></table></figure>
+
+<h2 id="一级目录功能说明"><a href="#一级目录功能说明" class="headerlink" title="一级目录功能说明"></a>一级目录功能说明</h2><table>
+<thead>
+<tr>
+<th>目录&#x2F;文件</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>arch&#x2F;</strong></td>
+<td>处理器架构相关代码（MIPS架构的文件）</td>
+</tr>
+<tr>
+<td><strong>boards&#x2F;</strong></td>
+<td>开发板配置和支持代码</td>
+</tr>
+<tr>
+<td><strong>drivers&#x2F;</strong></td>
+<td>硬件驱动程序（GPIO、I2C、SPI等）</td>
+</tr>
+<tr>
+<td><strong>dts&#x2F;</strong></td>
+<td>设备树文件配置</td>
+</tr>
+<tr>
+<td><strong>ext&#x2F;</strong></td>
+<td>外部依赖和扩展库</td>
+</tr>
+<tr>
+<td><strong>include&#x2F;</strong></td>
+<td>全局头文件（API定义、接口声明）</td>
+</tr>
+<tr>
+<td><strong>kernel&#x2F;</strong></td>
+<td>Zephyr内核核心实现</td>
+</tr>
+<tr>
+<td><strong>lib&#x2F;</strong></td>
+<td>通用库和工具函数</td>
+</tr>
+<tr>
+<td><strong>misc&#x2F;</strong></td>
+<td>杂项工具和功能</td>
+</tr>
+<tr>
+<td><strong>samples&#x2F;</strong></td>
+<td>应用示例</td>
+</tr>
+<tr>
+<td><strong>scripts&#x2F;</strong></td>
+<td>构建和工具脚本</td>
+</tr>
+<tr>
+<td><strong>subsys&#x2F;</strong></td>
+<td>子系统实现（蓝牙、网络等）</td>
+</tr>
+<tr>
+<td><strong>tests&#x2F;</strong></td>
+<td>单元测试和集成测试</td>
+</tr>
+</tbody></table>
+<h2 id="目录结构详细说明"><a href="#目录结构详细说明" class="headerlink" title="目录结构详细说明"></a>目录结构详细说明</h2><h3 id="📁-arch-架构层"><a href="#📁-arch-架构层" class="headerlink" title="📁 arch&#x2F; 架构层"></a>📁 <strong>arch&#x2F;</strong> 架构层</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arch/</span><br><span class="line">├── common/             # 通用架构代码</span><br><span class="line">└── mips/               # MIPS处理器相关</span><br></pre></td></tr></table></figure>
+
+<h3 id="📁-boards-开发板支持"><a href="#📁-boards-开发板支持" class="headerlink" title="📁 boards&#x2F; 开发板支持"></a>📁 <strong>boards&#x2F;</strong> 开发板支持</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boards/</span><br><span class="line">└── mips/</span><br><span class="line">    └── ats2853_dvb/    # ATS2853 DVB 版型相关代码和配置</span><br><span class="line">                        # 包含开发板的初始化、外设配置等</span><br></pre></td></tr></table></figure>
+
+<h3 id="📁-drivers-驱动层"><a href="#📁-drivers-驱动层" class="headerlink" title="📁 drivers&#x2F; 驱动层"></a>📁 <strong>drivers&#x2F;</strong> 驱动层</h3><p>包含40+个子目录，主要驱动类型：</p>
+<ul>
+<li><strong>通信</strong>：uart, i2c, spi, usb, bluetooth</li>
+<li><strong>音频</strong>：audio, i2s, dsp</li>
+<li><strong>存储</strong>：flash, mmc, nvram</li>
+<li><strong>控制</strong>：gpio, pinmux, pwm, timer</li>
+<li><strong>电源</strong>：power, dvfs, watchdog</li>
+<li><strong>传感</strong>：sensor, adc, counter</li>
+</ul>
+<h3 id="📁-ext-扩展库"><a href="#📁-ext-扩展库" class="headerlink" title="📁 ext&#x2F; 扩展库"></a>📁 <strong>ext&#x2F;</strong> 扩展库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ext/</span><br><span class="line">├── actions/            # Actions公司特定实现</span><br><span class="line">├── debug/              # 调试工具</span><br><span class="line">├── fs/                 # 文件系统</span><br><span class="line">├── hal/                # 硬件抽象层</span><br><span class="line">└── lib/                # 第三方库</span><br></pre></td></tr></table></figure>
+
+<h3 id="📁-include-头文件库"><a href="#📁-include-头文件库" class="headerlink" title="📁 include&#x2F; 头文件库"></a>📁 <strong>include&#x2F;</strong> 头文件库</h3><p>包含所有公共接口定义：</p>
+<ul>
+<li>核心API：device.h, kernel.h, atomic.h</li>
+<li>驱动接口：gpio.h, i2c.h, uart.h, pwm.h等</li>
+<li>音频系统：audio.h, audio_in.h, audio_out.h</li>
+<li>配置管理：config&#x2F;</li>
+<li>编译工具链：toolchain&#x2F;</li>
+</ul>
+<h3 id="📁-kernel-内核核心"><a href="#📁-kernel-内核核心" class="headerlink" title="📁 kernel&#x2F; 内核核心"></a>📁 <strong>kernel&#x2F;</strong> 内核核心</h3><p>包含OS内核的实现：</p>
+<ul>
+<li>进程&#x2F;线程管理</li>
+<li>中断处理</li>
+<li>时钟和定时器</li>
+<li>内存管理</li>
+<li>设备管理</li>
+</ul>
+<h3 id="📁-samples-应用"><a href="#📁-samples-应用" class="headerlink" title="📁 samples&#x2F; 应用"></a>📁 <strong>samples&#x2F;</strong> 应用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">samples/</span><br><span class="line">└──  bt_box/            # 蓝牙音箱示例应用</span><br></pre></td></tr></table></figure>
+
+<h3 id="📁-scripts-构建和工具脚本"><a href="#📁-scripts-构建和工具脚本" class="headerlink" title="📁 scripts&#x2F; 构建和工具脚本"></a>📁 <strong>scripts&#x2F;</strong> 构建和工具脚本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">scripts/</span><br><span class="line">└── support/</span><br><span class="line">    └── actions/        # 打包和量产脚本目录</span><br><span class="line">                        # 包含编译、打包、烧录等自动化脚本</span><br></pre></td></tr></table></figure>
+
+<h3 id="📁-subsys-子系统"><a href="#📁-subsys-子系统" class="headerlink" title="📁 subsys&#x2F; 子系统"></a>📁 <strong>subsys&#x2F;</strong> 子系统</h3><p>中间件层实现：</p>
+<ul>
+<li>蓝牙管理（bluetooth）</li>
+<li>网络协议栈</li>
+<li>文件系统</li>
+<li>日志和追踪</li>
+</ul>
+<h2 id="构建配置文件说明"><a href="#构建配置文件说明" class="headerlink" title="构建配置文件说明"></a>构建配置文件说明</h2><table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Kconfig</strong></td>
+<td>Menuconfig配置选项定义</td>
+</tr>
+<tr>
+<td><strong>Kbuild</strong></td>
+<td>编译规则定义</td>
+</tr>
+<tr>
+<td><strong>Makefile</strong></td>
+<td>顶级编译入口</td>
+</tr>
+<tr>
+<td><strong>build.sh</strong></td>
+<td>构建脚本</td>
+</tr>
+<tr>
+<td><strong>clean_zs285a.sh</strong></td>
+<td>清理编译产物</td>
+</tr>
+<tr>
+<td><strong>genpatch.sh</strong></td>
+<td>补丁生成工具</td>
+</tr>
+</tbody></table>
+<h2 id="层级架构关系"><a href="#层级架构关系" class="headerlink" title="层级架构关系"></a>层级架构关系</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────┐</span><br><span class="line">│   应用层 (samples/bt_box)       │</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   中间件层 (subsys)             │ 音频管理、蓝牙管理等</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   驱动层 (drivers)              │ I2C、SPI、GPIO等硬件驱动</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   系统库 (lib, ext)             │ 工具函数、算法库</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   内核层 (kernel)               │ 线程、中断、内存管理</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   硬件抽象层 (hal)              │ 寄存器/硬件操作封装</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   架构层 (arch)                 │ MIPS处理器特定代码</span><br><span class="line">├─────────────────────────────────┤</span><br><span class="line">│   硬件 (ZS285A芯片)             │</span><br><span class="line">└─────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h1 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h1><h2 id="应用的上电初始化顺序"><a href="#应用的上电初始化顺序" class="headerlink" title="应用的上电初始化顺序"></a>应用的上电初始化顺序</h2><p><code>main–&gt;bt manager–&gt;bt service–&gt;front app</code></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Zephyr笔记</p><p><a href="https://shana-wen.github.io/2026/04/23/2026-04-23-Zephyr/">https://shana-wen.github.io/2026/04/23/2026-04-23-Zephyr/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shana-wen</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-04-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-05-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Kernel/">Kernel</a><a class="link-muted mr-2" rel="tag" href="/tags/Zephyr/">Zephyr</a></div><div class="sharethis-inline-share-buttons"></div><script src="none" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/04/27/2026-04-27-copy_proc/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">打包程序和依赖库安装</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/12/31/2025-12-31-gh_pages/"><span class="level-item">GitHub Pages + Hexo创建博客</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#基于Zephyr的嵌入式系统工程目录结构"><span class="level-left"><span class="level-item">1</span><span class="level-item">基于Zephyr的嵌入式系统工程目录结构</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#项目概述"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">项目概述</span></span></a></li><li><a class="level is-mobile" href="#SDK主要目录结构"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">SDK主要目录结构</span></span></a></li><li><a class="level is-mobile" href="#一级目录功能说明"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">一级目录功能说明</span></span></a></li><li><a class="level is-mobile" href="#目录结构详细说明"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">目录结构详细说明</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#📁-arch-架构层"><span class="level-left"><span class="level-item">1.4.1</span><span class="level-item">📁 arch/ 架构层</span></span></a></li><li><a class="level is-mobile" href="#📁-boards-开发板支持"><span class="level-left"><span class="level-item">1.4.2</span><span class="level-item">📁 boards/ 开发板支持</span></span></a></li><li><a class="level is-mobile" href="#📁-drivers-驱动层"><span class="level-left"><span class="level-item">1.4.3</span><span class="level-item">📁 drivers/ 驱动层</span></span></a></li><li><a class="level is-mobile" href="#📁-ext-扩展库"><span class="level-left"><span class="level-item">1.4.4</span><span class="level-item">📁 ext/ 扩展库</span></span></a></li><li><a class="level is-mobile" href="#📁-include-头文件库"><span class="level-left"><span class="level-item">1.4.5</span><span class="level-item">📁 include/ 头文件库</span></span></a></li><li><a class="level is-mobile" href="#📁-kernel-内核核心"><span class="level-left"><span class="level-item">1.4.6</span><span class="level-item">📁 kernel/ 内核核心</span></span></a></li><li><a class="level is-mobile" href="#📁-samples-应用"><span class="level-left"><span class="level-item">1.4.7</span><span class="level-item">📁 samples/ 应用</span></span></a></li><li><a class="level is-mobile" href="#📁-scripts-构建和工具脚本"><span class="level-left"><span class="level-item">1.4.8</span><span class="level-item">📁 scripts/ 构建和工具脚本</span></span></a></li><li><a class="level is-mobile" href="#📁-subsys-子系统"><span class="level-left"><span class="level-item">1.4.9</span><span class="level-item">📁 subsys/ 子系统</span></span></a></li></ul></li><li><a class="level is-mobile" href="#构建配置文件说明"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">构建配置文件说明</span></span></a></li><li><a class="level is-mobile" href="#层级架构关系"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">层级架构关系</span></span></a></li></ul></li><li><a class="level is-mobile" href="#FQA"><span class="level-left"><span class="level-item">2</span><span class="level-item">FQA</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#应用的上电初始化顺序"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">应用的上电初始化顺序</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/C%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">C语言</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">图像处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"><span class="level-start"><span class="level-item">嵌入式</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">开发工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><span class="level-start"><span class="level-item">开发环境配置</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-04-27T01:43:40.000Z">2026-04-27</time></p><p class="title"><a href="/2026/04/27/2026-04-27-copy_proc/">打包程序和依赖库安装</a></p><p class="categories"><a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-04-23T12:14:58.000Z">2026-04-23</time></p><p class="title"><a href="/2026/04/23/2026-04-23-Zephyr/">Zephyr笔记</a></p><p class="categories"><a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-31T07:33:50.000Z">2025-12-31</time></p><p class="title"><a href="/2025/12/31/2025-12-31-gh_pages/">GitHub Pages + Hexo创建博客</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-20T08:55:50.000Z">2025-12-20</time></p><p class="title"><a href="/2025/12/20/2025-12-20-vscode_format/">Visual Studio Code 自动格式化</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-20T07:18:04.000Z">2025-12-20</time></p><p class="title"><a href="/2025/12/20/2025-12-20-vscode_shortcut/">在右键菜单中添加Visual Studio Code</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/04/"><span class="level-start"><span class="level-item">四月 2026</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/12/"><span class="level-start"><span class="level-item">十二月 2025</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/03/"><span class="level-start"><span class="level-item">三月 2025</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">八月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">十二月 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png" alt="命运的十字路口" height="28"></a><p class="is-size-7"><span>&copy; 2026 Shana-wen</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Shana-wen/Shana-wen.github.io.git"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

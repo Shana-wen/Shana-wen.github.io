@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>C语言笔记 - 命运的十字路口</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="命运的十字路口"><meta name="msapplication-TileImage" content="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="命运的十字路口"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="记录C语言相关的笔记"><meta property="og:type" content="blog"><meta property="og:title" content="C语言笔记"><meta property="og:url" content="https://shana-wen.github.io/2019/12/13/2019-12-13-c_note/"><meta property="og:site_name" content="命运的十字路口"><meta property="og:description" content="记录C语言相关的笔记"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://shana-wen.github.io/img/og_image.png"><meta property="article:published_time" content="2019-12-13T04:12:14.000Z"><meta property="article:modified_time" content="2026-05-01T14:28:05.303Z"><meta property="article:author" content="Shana-wen"><meta property="article:tag" content="C"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://shana-wen.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://shana-wen.github.io/2019/12/13/2019-12-13-c_note/"},"headline":"C语言笔记","image":["https://shana-wen.github.io/img/og_image.png"],"datePublished":"2019-12-13T04:12:14.000Z","dateModified":"2026-05-01T14:28:05.303Z","author":{"@type":"Person","name":"Shana-wen"},"publisher":{"@type":"Organization","name":"命运的十字路口","logo":{"@type":"ImageObject","url":"https://shana-wen.github.io/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"}},"description":"记录C语言相关的笔记"}</script><link rel="canonical" href="https://shana-wen.github.io/2019/12/13/2019-12-13-c_note/"><link rel="icon" href="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png" alt="命运的十字路口" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">时间轴</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Shana-wen/Shana-wen.github.io.git"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2019-12-13T04:12:14.000Z" title="12/13/2019, 4:12:14 AM">2019-12-13</time>发表</span><span class="level-item"><time dateTime="2026-05-01T14:28:05.303Z" title="5/1/2026, 2:28:05 PM">2026-05-01</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a></span><span class="level-item">1 小时读完 (大约6816个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">C语言笔记</h1><div class="content"><h1 id="编译和链接"><a href="#编译和链接" class="headerlink" title="编译和链接"></a>编译和链接</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ol>
+<li>编译器的任务<br>编译器把<strong>源代码</strong>（如，用C语言编写的代码）翻译成等价的<strong>机器语言代码</strong>（也叫作目标代码）。</li>
+<li>链接器的任务<br>链接器把编译器翻译好的<strong>目标代码</strong>、<strong>库代码</strong>和<strong>启动代码</strong>组合起来，生成一个<strong>可执行程序</strong>。</li>
+</ol>
+<h2 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h2><h3 id="C程序的完整编译过程示例"><a href="#C程序的完整编译过程示例" class="headerlink" title="C程序的完整编译过程示例"></a>C程序的完整编译过程示例</h3><ol>
+<li>预处理（Prepressing）</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -E hello.c -o hello.i</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>编译（Compilation）</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -S hello.i -o hello.s</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>汇编（Assembly）</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c hello.s -o hello.o</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>链接（Linking）</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc hello.o -o hello</span><br></pre></td></tr></table></figure>
+
+<h3 id="GCC基本语法"><a href="#GCC基本语法" class="headerlink" title="GCC基本语法"></a>GCC基本语法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-o [filename]：指定输出文件名称。</span><br><span class="line"></span><br><span class="line">-c：仅编译，不进行链接，生成目标文件（.o）。</span><br><span class="line"></span><br><span class="line">-E：仅执行预处理，生成预处理文件（.i）。</span><br><span class="line"></span><br><span class="line">-S：将源代码编译为汇编代码（.s）。</span><br><span class="line"></span><br><span class="line">-g：生成调试信息，便于使用调试工具（如GDB）。</span><br><span class="line"></span><br><span class="line">-O：优化代码，支持-O1、-O2、-O3等不同优化级别。</span><br><span class="line"></span><br><span class="line">-Wall：启用所有警告信息。</span><br><span class="line"></span><br><span class="line">-static：使用静态链接。</span><br><span class="line"></span><br><span class="line">-shared：生成共享库。</span><br><span class="line"></span><br><span class="line">-I [<span class="built_in">dir</span>]：指定头文件搜索路径。</span><br><span class="line"></span><br><span class="line">-L [<span class="built_in">dir</span>]：指定库文件搜索路径。</span><br><span class="line"></span><br><span class="line">-l [libname]：链接指定的库。</span><br></pre></td></tr></table></figure>
+
+<h1 id="sizeof和strlen"><a href="#sizeof和strlen" class="headerlink" title="sizeof和strlen"></a>sizeof和strlen</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>sizeof</th>
+<th>strlen</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>性质</td>
+<td>编译时运算符</td>
+<td>‌库函数(string.h)</td>
+</tr>
+<tr>
+<td>作用</td>
+<td>计算字节大小</td>
+<td>计算字符串的长度（不包括结尾的\0字符）</td>
+</tr>
+</tbody></table>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>指针(<strong>pointer</strong>)是一个值为内存地址的变量（或数据对象）。</p>
+<h2 id="可以对指针进行哪些操作？"><a href="#可以对指针进行哪些操作？" class="headerlink" title="可以对指针进行哪些操作？"></a>可以对指针进行哪些操作？</h2><ol>
+<li><strong>赋值</strong>：可以把地址赋给指针。</li>
+<li><strong>解引用</strong>：<code>*</code>运算符给出指针指向地址上储存的值。</li>
+<li><strong>取址</strong>：和所有变量一样，指针变量也有自己的地址和值。对指针而言，<code>&amp;</code>运算符给出指针本身的地址。</li>
+<li><strong>指针与整数相加</strong>：可以使用<code>+</code>运算符把指针与整数相加，或整数与指针相加。无论哪种情况，整数都会和指针所指向类型的大小（以字节为单位）相乘，然后把结果与初始地址相加。</li>
+<li><strong>递增指针</strong>：递增指向数组元素的指针可以让该指针移动至数组的下一个元素。</li>
+<li><strong>指针减去一个整数</strong>：可以使用<code>-</code>运算符从一个指针中减去一个整数。指针必须是第1个运算对象，整数是第2个运算对象。该整数将乘以指针指向类型的大小（以字节为单位），然后用初始地址减去乘积。</li>
+<li><strong>递减指针</strong>：递减指向数组元素的指针可以让该指针移动至数组的上一个元素。</li>
+<li><strong>指针求差</strong>：可以计算两个指针的差值。通常，求差的两个指针分别指向同一个数组的不同元素，通过计算求出两元素之间的距离。差值的单位与数组类型的单位相同。</li>
+<li><strong>比较</strong>：使用关系运算符可以比较两个指针的值，前提是两个指针都指向相同类型的对象。</li>
+</ol>
+<h2 id="复合字面量"><a href="#复合字面量" class="headerlink" title="复合字面量"></a>复合字面量</h2><ol>
+<li><strong>语法形式为</strong>：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(类型名)&#123; 初始化列表 &#125;</span><br><span class="line"><span class="comment">/* 例如 */</span></span><br><span class="line"><span class="type">int</span>* ptr = (<span class="type">int</span>[<span class="number">2</span>])&#123; <span class="number">2</span>, <span class="number">4</span> &#125;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>类型名<br>指定了要创建的匿名对象的类型，如 <code>int[5]</code>、<code>struct point</code>等。</li>
+<li>初始化列表<br>与普通变量初始化语法相同，用于给该匿名对象赋初值。</li>
+</ul>
+<ol>
+<li><strong>作用域与生命周期</strong>‌：</li>
+</ol>
+<ul>
+<li>当复合字面量出现在函数体外时，它具有‌静态存储期‌（整个程序运行期间存在）。</li>
+<li>当出现在函数体内时，它具有‌自动存储期‌（通常在其所在的块作用域结束时失效）。</li>
+<li>其地址可以被获取，并且可以像普通变量一样被修改（除非被限定为<code>const</code>）。</li>
+</ul>
+<ol>
+<li><strong>‌提高代码紧凑性与可读性</strong>‌：</li>
+</ol>
+<ul>
+<li>避免了为仅使用一次的临时变量单独命名和声明，使代码更简洁。</li>
+</ul>
+<h2 id="函数指针-函数指针"><a href="#函数指针-函数指针" class="headerlink" title="函数指针&amp;函数指针"></a>函数指针&amp;函数指针</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>指针函数</th>
+<th>函数指针</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>性质</td>
+<td>函数，返回指针类型</td>
+<td>指针变量，存储函数地址</td>
+</tr>
+<tr>
+<td>示例</td>
+<td>int* fun(int a)</td>
+<td>int (*fun)(int, int)</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>返回数据地址（如数组、字符串）</td>
+<td>动态调用函数（如回调机制）</td>
+</tr>
+</tbody></table>
+<h1 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h1><h2 id="存储类别"><a href="#存储类别" class="headerlink" title="存储类别"></a>存储类别</h2><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>作用域描述程序中可访问标识符的区域。一个C变量的作用域可以是<strong>块作用域</strong>、<strong>函数作用域</strong>、<strong>函数原型作用域</strong>或<strong>文件作用域</strong>。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>变量有3种链接属性：<strong>外部链接</strong>、<strong>内部链接</strong>或<strong>无链接</strong>。</p>
+<ol>
+<li>具有<strong>块作用域</strong>、<strong>函数作用域</strong>或<strong>函数原型作用域</strong>的变量都是<strong>无链接</strong>变量。这些变量属于定义它们的块、函数或原型私有。</li>
+<li>具有<strong>文件作用域</strong>的变量可以是<strong>外部链接</strong>或<strong>内部链接</strong>。外部链接变量可以在多文件程序中使用，内部链接变量只能在一个翻译单元中使用。</li>
+</ol>
+<ul>
+<li>注：C 标准用“内部链接的文件作用域”描述仅限于一个翻译单元（即一个源代码文件和它所包含的头文件）的作用域，用“外部链接的文件作用域”描述可延伸至其他翻译单元的作用域。但是，对程序员而言这些术语太长了。一些程序员把“内部链接的文件作用域”简称为“<strong>文件作用域</strong>”，把“外部链接的文件作用域”简称为“<strong>全局作用域</strong>”或“程序作用域”。</li>
+</ul>
+<h3 id="存储期"><a href="#存储期" class="headerlink" title="存储期"></a>存储期</h3><p><strong>作用域</strong>和<strong>链接</strong>描述了标识符的可见性。<strong>存储期</strong>描述了通过这些标识符访问的对象的生存期。C对象有4种存储期：<strong>静态存储期</strong>、<strong>线程存储期</strong>、<strong>自动存储期</strong>、<strong>动态分配存储期</strong>。</p>
+<ol>
+<li>如果对象具有<strong>静态存储期</strong>，那么它在程序的执行期间一直存在。<strong>文件作用域变量具有静态存储期</strong>。注意，对于文件作用域变量，<code>static</code>表明了其链接属性，而非存储期。以 <code>static</code>声明的文件作用域变量具有内部链接。但是无论是内部链接还是外部链接，所有的文件作用域变量都具有静态存储期。</li>
+<li>线程存储期用于并发程序设计，程序执行可被分为多个线程。具有线程存储期的对象，从被声明时到线程结束一直存在。以关键字<code>_Thread_local</code>声明一个对象时，每个线程都获得该变量的私有备份。</li>
+<li>块作用域的变量通常都具有自动存储期。当程序进入定义这些变量的块时，为这些变量分配内存；当退出这个块时，释放刚才为变量分配的内存。</li>
+<li>变长数组稍有不同，它们的存储期从声明处到块的末尾，而不是从块的开始处到块的末尾。</li>
+</ol>
+<ul>
+<li>5种存储类别：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>存储类别</th>
+<th>存储期</th>
+<th>作用域</th>
+<th>链接</th>
+<th>声明方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>自动</td>
+<td>自动</td>
+<td>块</td>
+<td>无</td>
+<td>块内</td>
+</tr>
+<tr>
+<td>寄存器</td>
+<td>自动</td>
+<td>块</td>
+<td>无</td>
+<td>块内，<code>register</code></td>
+</tr>
+<tr>
+<td>静态外部链接</td>
+<td>静态</td>
+<td>文件</td>
+<td>外部</td>
+<td>所有函数外</td>
+</tr>
+<tr>
+<td>静态内部链接</td>
+<td>静态</td>
+<td>文件</td>
+<td>内部</td>
+<td>所有函数外，<code>static</code></td>
+</tr>
+<tr>
+<td>静态无链接</td>
+<td>静态</td>
+<td>块</td>
+<td>无</td>
+<td>块内，<code>static</code></td>
+</tr>
+</tbody></table>
+<h3 id="存储类别说明符"><a href="#存储类别说明符" class="headerlink" title="存储类别说明符"></a>存储类别说明符</h3><ol>
+<li><code>auto</code>说明符表明变量是自动存储期，只能用于块作用域的变量声明中。由于在块中声明的变量本身就具有自动存储期，所以使用<code>auto</code>主要是为了明确表达要使用与外部变量同名的局部变量的意图。</li>
+<li><code>register</code>说明符也只用于块作用域的变量，它把变量归为寄存器存储类别，请求最快速度访问该变量。同时，还保护了该变量的地址不被获取。</li>
+<li>用 <code>static</code>说明符创建的对象具有静态存储期，载入程序时创建对象，当程序结束时对象消失。如果<code>static</code> 用于文件作用域声明，作用域受限于该文件。如果 <code>static</code>用于块作用域声明，作用域则受限于该块。因此，只要程序在运行对象就存在并保留其值，但是只有在执行块内的代码时，才能通过标识符访问。块作用域的静态变量无链接。文件作用域的静态变量具有内部链接。</li>
+<li><code>extern</code> 说明符表明声明的变量定义在别处。如果包含 <code>extern</code> 的声明具有文件作用域，则引用的变量必须具有外部链接。如果包含 <code>extern</code> 的声明具有块作用域，则引用的变量可能具有外部链接或内部链接，这接取决于该变量的定义式声明。</li>
+</ol>
+<h2 id="分配内存：malloc和free"><a href="#分配内存：malloc和free" class="headerlink" title="分配内存：malloc和free"></a>分配内存：malloc和free</h2><ol>
+<li><strong>静态存储类别所用的内存数量</strong>在编译时确定，只要程序还在运行，就可访问储存在该部分的数据。该类别的变量在程序开始执行时被创建，在程序结束时被销毁。</li>
+<li><strong>自动存储类别的变量</strong>在程序进入变量定义所在块时存在，在程序离开块时消失。因此，随着程序调用函数和函数结束，自动变量所用的内存数量也相应地增加和减少。这部分的内存通常作为栈来处理，这意味着新创建的变量按顺序加入内存，然后以相反的顺序销毁。</li>
+<li><strong>动态分配的内存</strong>在调用<code>malloc()</code>或相关函数时存在，在调用<code>free()</code>后释放。这部分的内存由程序员管理，而不是一套规则。所以内存块可以在一个函数中创建，在另一个函数中销毁。正是因为这样，这部分的内存用于动态内存分配会支离破碎。也就是说，未使用的内存块分散在已使用的内存块之间。另外，使用动态内存通常比使用栈内存慢。</li>
+</ol>
+<h2 id="ANSI-C类型限定符"><a href="#ANSI-C类型限定符" class="headerlink" title="ANSI C类型限定符"></a>ANSI C类型限定符</h2><h3 id="const"><a href="#const" class="headerlink" title="const"></a><code>const</code></h3><p>以<code>const</code>关键字声明的对象，其值不能通过赋值或递增、递减来修改。</p>
+<h4 id="在指针和形参声明中使用const"><a href="#在指针和形参声明中使用const" class="headerlink" title="在指针和形参声明中使用const"></a>在指针和形参声明中使用const</h4><ol>
+<li><strong><code>const</code>放在<code>*</code>左侧任意位置，限定了指针指向的数据不能改变。</strong></li>
+<li><strong><code>const</code>放在<code>*</code>的右侧，限定了指针本身不能改变。</strong></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   ptr_a 指向一个int类型的const值</span></span><br><span class="line"><span class="comment"> *          ptr_a 指向的值不能被改变，而 ptr_a 本身的值可以改变</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>* ptr_a;   <span class="comment">/* 与int const* ptr_a;相同 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   ptr_b 是一个const指针</span></span><br><span class="line"><span class="comment"> *          ptr_b 本身的值不能更改，必须指向同一个地址，但是它所指向的值可以改变</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span>* <span class="type">const</span> ptr_b;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   ptr_c 既不能指向别处，它所指向的值也不能改变。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span>* <span class="type">const</span> ptr_c;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对全局数据使用const"><a href="#对全局数据使用const" class="headerlink" title="对全局数据使用const"></a>对全局数据使用<code>const</code></h4><ol>
+<li>方案一，在一个文件中使用定义式声明，在其他文件中使<br>用引用式声明（<code>extern</code>）：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* file1.c -- 定义了一些外部const变量 */</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.14159</span>;</span><br><span class="line"><span class="comment">/* file2.c -- 使用定义在别处的外部const变量 */</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">const</span> <span class="type">double</span> PI;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>方案二，把<code>const</code>变量放在一个头文件中，然后在其他文件中包含该头文件：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* constant.h --定义了一些外部const变量*/</span></span><br><span class="line"><span class="type">static</span> <span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.14159</span>;</span><br><span class="line"><span class="comment">/* file1.c --使用定义在别处的外部const变量*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;constant.h&quot;</span></span></span><br><span class="line"><span class="comment">/* file2.c --使用定义在别处的外部const变量*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;constant.h&quot;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>必须在头文件中用<code>static</code>声明全局<code>const</code>变量,否则在<code>file1.c</code>和<code>file2.c</code>中包含的<code>constant.h</code>将导致每个文件中都有一个相同标识符的定义式声明。</li>
+<li>方法二相当于给每个文件提供了一个单独的数据副本。由于每个副本只对该文件可见，所以无法用这些数据和其他文件通信。不过它们都是完全相同（每个文件都包含相同的头文件）的<code>const</code>数据（声明时使用了<code>const</code>关键字）。</li>
+<li>头文件方案的好处是，所有文件都只需包含同一个头文件。但它的缺点是，数据是重复的。如果const数据包含庞大的数组，就不能视而不见了。</li>
+</ul>
+<h4 id="const与-define"><a href="#const与-define" class="headerlink" title="const与``#define"></a><code>const与``#define</code></h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> LIMIT 20</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> LIM = <span class="number">50</span>;</span><br><span class="line"><span class="type">static</span> <span class="type">int</span> data1[LIMIT];    <span class="comment">/* 有效 */</span></span><br><span class="line"><span class="type">static</span> <span class="type">int</span> data2[LIM];      <span class="comment">/* 无效 */</span></span><br></pre></td></tr></table></figure>
+<p>在文件作用域（即所有函数之外，全局变量区域）声明数组时，数组的大小必须是一个‌编译时常量表达式‌（整型常量的组合、枚举常量和sizeof表达式），不包括<code>const</code>声明的值（这也是C++和C的区别之一，在C++中可以把const值作为常量表达式的一部分）。</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a><code>volatile</code></h3><p><code>volatile</code>限定符告知计算机，代理（而不是变量所在的程序）可以改变该变量的值。通常，它被用于硬件地址以及在其他程序或同时运行的线程中共享数据。</p>
+<ol>
+<li><code>volatile</code>的语法和<code>const</code>一样：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="type">int</span> loc;       <span class="comment">/* loc 是一个易变的位置 */</span></span><br><span class="line"><span class="keyword">volatile</span> <span class="type">int</span>* ptr_loc;  <span class="comment">/* ptr_loc 是一个指向易变的位置的指针 */</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>可以同时用<code>const</code>和<code>volatile</code>限定一个值。例如，通常用<code>const</code>把硬件时钟设置为程序不能更改的变量，但是可以通过代理改变，这时用<code>volatile</code>。只能在声明中同时使用这两个限定符，它们的顺序不重要，如下所示：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="type">const</span> <span class="type">int</span> loc;</span><br><span class="line"><span class="type">const</span> <span class="keyword">volatile</span> <span class="type">int</span>* ptr_loc;</span><br></pre></td></tr></table></figure>
+
+<h3 id="restrict"><a href="#restrict" class="headerlink" title="restrict"></a><code>restrict</code></h3><p><code>restrict</code>关键字允许编译器优化某部分代码以更好地支持计算。它只能用于指针，表明该指针是访问数据对象的唯一且初始的方式。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 指针restar是访问由malloc()所分配内存的唯一且初始的方式。</span></span><br><span class="line"><span class="comment"> * 因此，可以用restrict关键字限定它。 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span>* <span class="keyword">restrict</span> restar = (<span class="type">int</span>*) = <span class="built_in">malloc</span>(<span class="number">10</span> * <span class="keyword">sizeof</span>(<span class="type">int</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="Atomic（C11）"><a href="#Atomic（C11）" class="headerlink" title="_Atomic（C11）"></a><code>_Atomic</code>（C11）</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">_Atomic</span> <span class="type">int</span> hogs;　　　　　　<span class="comment">/* hogs 是一个原子类型的变量 */</span></span><br><span class="line"><span class="type">atomic_store</span>(&amp;hogs, <span class="number">12</span>);    <span class="comment">/* stdatomic.h 中的宏 */</span></span><br><span class="line"><span class="comment">/* 在hogs中储存12是一个原子过程，其他线程不能访问hogs */</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="文件输入-输出"><a href="#文件输入-输出" class="headerlink" title="文件输入&#x2F;输出"></a>文件输入&#x2F;输出</h1><h2 id="标准I-O"><a href="#标准I-O" class="headerlink" title="标准I&#x2F;O"></a>标准I&#x2F;O</h2><h3 id="exit"><a href="#exit" class="headerlink" title="exit()"></a><code>exit()</code></h3><ol>
+<li><code>exit()</code>函数关闭所有打开的文件并结束程序。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 0 或 EXIT_SUCCESS 用于表明成功结束程序 */</span></span><br><span class="line"><span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line"><span class="comment">/* 1 或 EXIT_FAILURE 用于表明结束程序失败 */</span></span><br><span class="line"><span class="built_in">exit</span>(EXIT_FAILURE);</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>根据ANSI C的规定，在最初调用的<code>main()</code>中使用<code>return</code>与调用<code>exit()</code>的效果相同。因此，在<code>main()</code>中<br><code>return 0;</code>与<code>exit(0);</code>的作用相同。</li>
+<li>但是，我们说的是“最初的调用”。如果<code>main()</code>在一个递归程序中，<code>exit()</code>仍然会终止程序，但是<code>return</code>只会把控制权交给上一级递归，直至最初的一级。然后<code>return</code>结束程序。</li>
+<li><code>return</code>和<code>exit()</code>的另一个区别是，即使在其他函数中（除main()以外）调用<code>exit()</code>也能结束整个程序。</li>
+</ol>
+<h3 id="fopen"><a href="#fopen" class="headerlink" title="fopen()"></a><code>fopen()</code></h3><p><code>fopen()</code>模式字符串说明</p>
+<table>
+<thead>
+<tr>
+<th align="center">‌模式字符串‌</th>
+<th>‌含义‌</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">“r”</td>
+<td>以读模式打开文件（仅读，文件需存在）</td>
+</tr>
+<tr>
+<td align="center">“w”</td>
+<td>以写模式打开文件，把现有文件的长度戳截为0（新建&#x2F;覆盖，不存在则创建）</td>
+</tr>
+<tr>
+<td align="center">“a”</td>
+<td>以写模式打开文件，在现有文件末尾添加内容（追加，不存在则创建）</td>
+</tr>
+<tr>
+<td align="center">“r+”</td>
+<td>以更新模式打开文件（读写，文件需存在）</td>
+</tr>
+<tr>
+<td align="center">“w+”</td>
+<td>以更新模式打开文件（读写，新建&#x2F;覆盖）</td>
+</tr>
+<tr>
+<td align="center">“a+”</td>
+<td>以更新模式打开文件；可以读整个文件，但只能从末尾添加内容（读写，追加）</td>
+</tr>
+<tr>
+<td align="center">“rb”、”wb”、”ab”<br>“ab+”、”a+b”<br>“wb+”、”w+b”</td>
+<td>二进制模式（对应文本模式功能）</td>
+</tr>
+<tr>
+<td align="center">“wx”、”wbx”、”w+x”<br>“wb+x”或”w+bx”</td>
+<td>（C11）独占模式（文件存在或以独占模式打开文件，则打开文件失败）</td>
+</tr>
+</tbody></table>
+<h3 id="getc-和putc"><a href="#getc-和putc" class="headerlink" title="getc()和putc()"></a><code>getc()</code>和<code>putc()</code></h3><p><code>getc()</code>和<code>putc()</code>函数与<code>getchar()</code>和<code>putchar()</code>函数类似。所不同的是，要告诉<code>getc()</code>和<code>putc()</code>函数使用哪一个文件。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> ch;</span><br><span class="line">FILE* fp;</span><br><span class="line"><span class="comment">/* 从fp指定的文件中获取一个字符 */</span></span><br><span class="line">ch = getc(fp);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 把字符ch放入FILE指针fpout指定的文件中 */</span></span><br><span class="line">putc(ch, fpout);</span><br></pre></td></tr></table></figure>
+
+<h3 id="fclose"><a href="#fclose" class="headerlink" title="fclose()"></a><code>fclose()</code></h3><p><code>fclose(fp)</code>函数关闭<code>fp</code>指定的文件，必要时刷新缓冲区。对于较正式的程序，应该检查是否成功关闭文件。如果成功关闭，fclose()函数返回0，否则返回EOF：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (fclose(fp) != <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Error in closing file %s\n&quot;</span>, argv[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果磁盘已满、移动硬盘被移除或出现I&#x2F;O错误，都会导致调用<code>fclose()</code>函数失败。</p>
+<h2 id="文件I-O"><a href="#文件I-O" class="headerlink" title="文件I&#x2F;O"></a>文件I&#x2F;O</h2><h3 id="fprintf-和fscanf"><a href="#fprintf-和fscanf" class="headerlink" title="fprintf()和fscanf()"></a><code>fprintf()</code>和<code>fscanf()</code></h3><p>与<code>printf()</code>和<code>scanf()</code>类似</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* \033[1;31m 31表示前景色为红色, \033[0m 恢复默认属性*/</span></span><br><span class="line"><span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;\033[1;31mCan&#x27;t create output file.\n\033[0m&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="fgets-和fputs"><a href="#fgets-和fputs" class="headerlink" title="fgets()和fputs()"></a><code>fgets()</code>和<code>fputs()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fgets(buf, len, fp);</span><br><span class="line"><span class="built_in">fputs</span>(buf, fp);</span><br></pre></td></tr></table></figure>
+<p>和<code>puts()</code>函数不同，<code>fputs()</code>在打印字符串时不会在其末尾添加换行符。</p>
+<h2 id="随机访问：fseek-和ftell"><a href="#随机访问：fseek-和ftell" class="headerlink" title="随机访问：fseek()和ftell()"></a>随机访问：<code>fseek()</code>和<code>ftell()</code></h2><h3 id="fseek-和ftell"><a href="#fseek-和ftell" class="headerlink" title="fseek()和ftell()"></a><code>fseek()</code>和<code>ftell()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   fseek()</span></span><br><span class="line"><span class="comment"> * @return  0:  正常</span></span><br><span class="line"><span class="comment"> *          -1: 出现错误（如试图移动的距离超出文件的范围）</span></span><br><span class="line"><span class="comment"> * @note    SEEK_CUR 当前位置</span></span><br><span class="line"><span class="comment"> *          SEEK_END 文件末尾</span></span><br><span class="line"><span class="comment"> *          SEEK_SET 文件开头</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/* 定位至文件开始处 */</span></span><br><span class="line">fseek(fp, <span class="number">0L</span>, SEEK_SET);</span><br><span class="line"><span class="comment">/* 从文件当前位置前移2个字节 */</span></span><br><span class="line">fseek(fp, <span class="number">2L</span>, SEEK_CUR);</span><br><span class="line"><span class="comment">/* 从文件结尾处回退1个字节 */</span></span><br><span class="line">fseek(fp, <span class="number">-1L</span>, SEEK_END);</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   ftell()</span></span><br><span class="line"><span class="comment"> * @return  long 返回的是当前的位置</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">long</span> last = ftell(fp);</span><br></pre></td></tr></table></figure>
+
+<h3 id="fgetpos-和fsetpos"><a href="#fgetpos-和fsetpos" class="headerlink" title="fgetpos()和fsetpos()"></a><code>fgetpos()</code>和<code>fsetpos()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   fgetpos()</span></span><br><span class="line"><span class="comment"> * @param   stream</span></span><br><span class="line"><span class="comment"> * @param   pos     该值描述了文件中的一个位置</span></span><br><span class="line"><span class="comment"> * @return  0: 成功; 非0: 失败</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">fgetpos</span><span class="params">(FILE* <span class="keyword">restrict</span> stream, <span class="type">fpos_t</span>* <span class="keyword">restrict</span> pos)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   fsetpos()</span></span><br><span class="line"><span class="comment"> * @param   stream</span></span><br><span class="line"><span class="comment"> * @param   pos     通过调用fgetpos()获得</span></span><br><span class="line"><span class="comment"> * @return  0: 成功; 非0: 失败</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">fsetpos</span><span class="params">(FILE* stream, <span class="type">const</span> <span class="type">fpos_t</span>* pos)</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="标准I-O的机理"><a href="#标准I-O的机理" class="headerlink" title="标准I&#x2F;O的机理"></a>标准I&#x2F;O的机理</h2><ol>
+<li>调用<code>fopen()</code>打开文件（C程序会自动打开3种标准文件）。<code>fopen()</code>函数不仅打开一个文件，还创建了一个缓冲区（在读写模式下会创建两个缓冲区）以及一个包含文件和缓冲区数据的结构。另外，<code>fopen()</code>返回一个指向该结构的指针。假设把该指针赋给一个指针变量fp，我们说fopen()函数“打开一个流”。如果以文本模式打开该文件，就获得一个文本流；如果以二进制模式打开该文件，就获得一个二进制流。这个结构通常包含一个指定流中当前位置的文件位置指示器。除此之外，它还包含错误和文件结尾的指示器、一个指向缓冲区开始处的指针、一个文件标识符和一个计数（统计实际拷贝进缓冲区的字节数）。我们主要考虑文件输入。</li>
+<li>通常，第2步是调用一个定义在<code>stdio.h</code>中的输入函数，如<code>fscanf()</code>、<code>getc()</code>或<code>fgets()</code>。一调用这些函数，文件中的数据块就被拷贝到缓冲区中。缓冲区的大小因实现而异，一般是512字节或是它的倍数，如4096或16384（随着计算机硬盘容量越来越大，缓冲区的大小也越来越大）。最初调用函数，除了填充缓冲区外，还要设置fp所指向的结构中的值。尤其要设置流中的当前位置和拷贝进缓冲区的字节数。通常，当前位置从字节0开始。在初始化结构和缓冲区后，输入函数按要求从缓冲区中读取数据。在它读取数据时，文件位置指示器被设置为指向刚读取字符的下一个字符。由于<code>stdio.h</code>系列的所有输入函数都使用相同的缓冲区，所以调用任何一个函数都将从上一次函数停止调用的位置开始。当输入函数发现已读完缓冲区中的所有字符时，会请求把下一个缓冲大小的数据块从文件拷贝到该缓冲区中。以这种方式，输入函数可以读取文件中的所有内容，直到文件结尾。函数在读取缓冲区中的最后一个字符后，把结尾指示器设置为真。于是，下一次被调用的输入函数将返回<code>EOF</code>。</li>
+<li>输出函数以类似的方式把数据写入缓冲区。当缓冲区被填满时，数据将被拷贝至文件中。</li>
+</ol>
+<h2 id="二进制I-O：fread-和fwrite"><a href="#二进制I-O：fread-和fwrite" class="headerlink" title="二进制I&#x2F;O：fread()和fwrite()"></a>二进制I&#x2F;O：<code>fread()</code>和<code>fwrite()</code></h2><h3 id="fwrite"><a href="#fwrite" class="headerlink" title="fwrite()"></a><code>fwrite()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   把二进制数据写入文件</span></span><br><span class="line"><span class="comment"> * @param   ptr     待写入数据块的地址</span></span><br><span class="line"><span class="comment"> * @param   size    待写入数据块的大小（以字节为单位）</span></span><br><span class="line"><span class="comment"> * @param   nmemb   待写入数据块的数量</span></span><br><span class="line"><span class="comment"> * @param   fp      待写入的文件</span></span><br><span class="line"><span class="comment"> * @return  成功，则该返回值就是nmemb</span></span><br><span class="line"><span class="comment"> *          如果出现写入错误，返回值会比nmemb小</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">fwrite</span><span class="params">(<span class="type">const</span> <span class="type">void</span>* <span class="keyword">restrict</span> ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> nmemb, FILE* <span class="keyword">restrict</span> fp)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 例，要保存一个大小为256字节的数据对象（如数组）： */</span></span><br><span class="line"><span class="type">char</span> buffer[<span class="number">256</span>];</span><br><span class="line">fwrite(buffer, <span class="number">256</span>, <span class="number">1</span>, fp);</span><br></pre></td></tr></table></figure>
+
+<h3 id="fread"><a href="#fread" class="headerlink" title="fread()"></a><code>fread()</code></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @brief   从文件读取二进制数据</span></span><br><span class="line"><span class="comment"> * @param   ptr     待读取文件数据在内存中的地址</span></span><br><span class="line"><span class="comment"> * @param   size    待读取数据块的大小（以字节为单位）</span></span><br><span class="line"><span class="comment"> * @param   nmemb   待读取数据块的数量</span></span><br><span class="line"><span class="comment"> * @param   fp      定待读取的文件</span></span><br><span class="line"><span class="comment"> * @return  成功，则该返回值就是nmemb</span></span><br><span class="line"><span class="comment"> *          如果出现读取错误或读到文件结尾，返回值会比nmemb小</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="type">size_t</span> <span class="title function_">fread</span><span class="params">(<span class="type">void</span> * <span class="keyword">restrict</span> ptr, <span class="type">size_t</span> size, <span class="type">size_t</span> nmemb,FILE * <span class="keyword">restrict</span> fp)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 例，要保存一个大小为256字节的数据对象（如数组）： */</span></span><br><span class="line"><span class="type">double</span> earnings[<span class="number">10</span>];</span><br><span class="line">fread(earnings, <span class="keyword">sizeof</span>(<span class="type">double</span>), <span class="number">10</span>, fp);</span><br></pre></td></tr></table></figure>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><p>和数组不同，结构名不是结构的地址，要在结构名前使用&amp;运算符才能获得结构的地址。</p>
+<h2 id="union"><a href="#union" class="headerlink" title="union"></a>union</h2><p><code>union</code>能在同一个内存空间中储存不同的数据类型（不是同时储存）。其大小取决于其最大成员的大小。</p>
+<ol>
+<li>用一个成员把值储存在一个联合中，然后用另一个成员查看内容</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">    <span class="type">short</span> short_value[<span class="number">2</span>];</span><br><span class="line">    <span class="type">int</span> int_value;</span><br><span class="line">    <span class="type">float</span> float_value;</span><br><span class="line">&#125; <span class="type">converter_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">    ···</span><br><span class="line">    <span class="type">converter_t</span> conv;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 存储浮点数 */</span></span><br><span class="line">    conv.float_value = <span class="number">3.14159f</span>;</span><br><span class="line">    <span class="comment">/* 查看整数值（查看内存表示） */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;float type: %.5f, addr: 0x%X (short_value[0]: %04X, short_value[1]: %04X)\n&quot;</span>, conv.float_value, conv.int_value, conv.short_value[<span class="number">0</span>], conv.short_value[<span class="number">1</span>]);</span><br><span class="line">    ···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> <span class="built_in">type</span>: 3.14159, addr: 0x40490FD0 (short_value[0]: 0FD0, short_value[1]: 4049)</span><br></pre></td></tr></table></figure>
+
+<h2 id="enum-enumerated-type"><a href="#enum-enumerated-type" class="headerlink" title="enum (enumerated type)"></a>enum (enumerated type)</h2><p>使用<code>enum</code>关键字，可以创建一个新“类型”并指定它可具有的值（实际上，enum常量是int类型）。</p>
+<h2 id="复杂的声明"><a href="#复杂的声明" class="headerlink" title="复杂的声明"></a>复杂的声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> board[<span class="number">8</span>][<span class="number">8</span>];        <span class="comment">/* 声明一个内含int数组的数组 */</span></span><br><span class="line"><span class="type">int</span>** ptr;              <span class="comment">/* 声明一个指向指针的指针，被指向的指针指向int */</span></span><br><span class="line"><span class="type">int</span>* risks[<span class="number">10</span>];         <span class="comment">/* 声明一个内含10个元素的数组，每个元素都是一个指向int的指针 */</span></span><br><span class="line"><span class="type">int</span> (*rusks)[<span class="number">10</span>];       <span class="comment">/* 声明一个指向数组的指针，该数组内含10个int类型的值 */</span></span><br><span class="line"><span class="type">int</span>* oof[<span class="number">3</span>][<span class="number">4</span>];         <span class="comment">/* 声明一个3×4 的二维数组，每个元素都是指向int的指针 */</span></span><br><span class="line"><span class="type">int</span> (*uuf)[<span class="number">3</span>][<span class="number">4</span>];       <span class="comment">/* 声明一个指向3×4二维数组的指针，该数组中内含int类型值 */</span></span><br><span class="line"><span class="type">int</span> (*uof[<span class="number">3</span>])[<span class="number">4</span>];       <span class="comment">/* 声明一个内含3个指针元素的数组，其中每个指针都指向一个内含4个int类型元素的数组 */</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* <span class="title function_">fump</span><span class="params">(<span class="type">int</span>)</span>;        <span class="comment">/* 返回字符指针的函数 */</span></span><br><span class="line"><span class="type">char</span> (*frump)(<span class="type">int</span>);     <span class="comment">/* 指向函数的指针，该函数的返回类型为char */</span></span><br><span class="line"><span class="type">char</span> (*flump[<span class="number">3</span>])(<span class="type">int</span>);  <span class="comment">/* 内含3个指针的数组，每个指针都指向返回类型为char的函数 */</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>数组名后面的<code>[]</code>和函数名后面的<code>()</code>具有相同的优先级。它们比<code>*</code>（解引用运算符）的优先级高。</li>
+<li><code>[]</code>和<code>()</code>的优先级相同，都是从左往右结合。</li>
+</ol>
+<h1 id="C预处理器"><a href="#C预处理器" class="headerlink" title="C预处理器"></a>C预处理器</h1><h2 id="宏和函数的选择"><a href="#宏和函数的选择" class="headerlink" title="宏和函数的选择"></a>宏和函数的选择</h2><ol>
+<li>宏和函数的选择实际上是时间和空间的权衡。</li>
+<li>宏生成内联代码，即在程序中生成语句。如果调用20次宏，即在程序中插入20行代码。如果调用函数20次，程序中只有一份函数语句的副本，所以节省了空间。</li>
+<li>然而，函数的调用过程包括建立调用、传递参数、跳转到函数代码并返回，这显然比内联代码花费更多的时间。</li>
+</ol>
+<h2 id="泛型编程（C11）"><a href="#泛型编程（C11）" class="headerlink" title="泛型编程（C11）"></a>泛型编程（C11）</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MYTYPE(X) _Generic((X),\</span></span><br><span class="line"><span class="meta">int: <span class="string">&quot;int&quot;</span>,\</span></span><br><span class="line"><span class="meta">float : <span class="string">&quot;float&quot;</span>,\</span></span><br><span class="line"><span class="meta">double: <span class="string">&quot;double&quot;</span>,\</span></span><br><span class="line"><span class="meta">default: <span class="string">&quot;other&quot;</span>\</span></span><br><span class="line"><span class="meta">)</span></span><br></pre></td></tr></table></figure>
+<p><code>_Generic</code>是C11的关键字。<code>_Generic</code>后面的圆括号中包含多个用逗号分隔的项。第1个项是一个表达式，后面的每个项都由一个类型、一个冒号和一个值组成。第1个项的类型匹配哪个标签，整个表达式的值是该标签后面的值。</p>
+<h2 id="inline-function（C99）"><a href="#inline-function（C99）" class="headerlink" title="inline function（C99）"></a>inline function（C99）</h2><ol>
+<li>把函数变成内联函数，编译器可能会用内联代码替换函数调用，并（或）执行一些其他的优化，但是也可能不起作用。</li>
+<li>编译器优化内联函数必须知道该函数定义的内容。这意味着内联函数定义与函数调用必须在同一个文件中。鉴于此，一般情况下内联函数都具有内部链接。因此，如果程序有多个文件都要使用某个内联函数，那么把内联函数定义放入头文件即可。</li>
+</ol>
+<h2 id="Noreturn函数（C11）"><a href="#Noreturn函数（C11）" class="headerlink" title="_Noreturn函数（C11）"></a>_Noreturn函数（C11）</h2><p>表明调用完成后函数不返回主调函数。<code>exit()</code>函数是<br><code>_Noreturn</code>函数的一个示例。</p>
+<h2 id="断言库"><a href="#断言库" class="headerlink" title="断言库"></a>断言库</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// #define NDEBUG</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;assert.h&gt;</span></span></span><br><span class="line">...</span><br><span class="line"><span class="type">int</span> a = b + c;</span><br><span class="line">assert(a &gt;= <span class="number">0</span>);</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div><div class="article-licensing box"><div class="licensing-title"><p>C语言笔记</p><p><a href="https://shana-wen.github.io/2019/12/13/2019-12-13-c_note/">https://shana-wen.github.io/2019/12/13/2019-12-13-c_note/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shana-wen</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2019-12-13</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-05-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/C/">C</a></div><div class="sharethis-inline-share-buttons"></div><script src="none" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/12/16/2019-12-16-sys_note/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">计算机系统笔记</span></a></div></nav><!--!--></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#编译和链接"><span class="level-left"><span class="level-item">1</span><span class="level-item">编译和链接</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#概述"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">概述</span></span></a></li><li><a class="level is-mobile" href="#gcc"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">gcc</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#C程序的完整编译过程示例"><span class="level-left"><span class="level-item">1.2.1</span><span class="level-item">C程序的完整编译过程示例</span></span></a></li><li><a class="level is-mobile" href="#GCC基本语法"><span class="level-left"><span class="level-item">1.2.2</span><span class="level-item">GCC基本语法</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#sizeof和strlen"><span class="level-left"><span class="level-item">2</span><span class="level-item">sizeof和strlen</span></span></a></li><li><a class="level is-mobile" href="#指针"><span class="level-left"><span class="level-item">3</span><span class="level-item">指针</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#可以对指针进行哪些操作？"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">可以对指针进行哪些操作？</span></span></a></li><li><a class="level is-mobile" href="#复合字面量"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">复合字面量</span></span></a></li><li><a class="level is-mobile" href="#函数指针-函数指针"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">函数指针&amp;函数指针</span></span></a></li></ul></li><li><a class="level is-mobile" href="#内存管理"><span class="level-left"><span class="level-item">4</span><span class="level-item">内存管理</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#存储类别"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">存储类别</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#作用域"><span class="level-left"><span class="level-item">4.1.1</span><span class="level-item">作用域</span></span></a></li><li><a class="level is-mobile" href="#链接"><span class="level-left"><span class="level-item">4.1.2</span><span class="level-item">链接</span></span></a></li><li><a class="level is-mobile" href="#存储期"><span class="level-left"><span class="level-item">4.1.3</span><span class="level-item">存储期</span></span></a></li><li><a class="level is-mobile" href="#存储类别说明符"><span class="level-left"><span class="level-item">4.1.4</span><span class="level-item">存储类别说明符</span></span></a></li></ul></li><li><a class="level is-mobile" href="#分配内存：malloc和free"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">分配内存：malloc和free</span></span></a></li><li><a class="level is-mobile" href="#ANSI-C类型限定符"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">ANSI C类型限定符</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#const"><span class="level-left"><span class="level-item">4.3.1</span><span class="level-item">const</span></span></a></li><li><a class="level is-mobile" href="#volatile"><span class="level-left"><span class="level-item">4.3.2</span><span class="level-item">volatile</span></span></a></li><li><a class="level is-mobile" href="#restrict"><span class="level-left"><span class="level-item">4.3.3</span><span class="level-item">restrict</span></span></a></li><li><a class="level is-mobile" href="#Atomic（C11）"><span class="level-left"><span class="level-item">4.3.4</span><span class="level-item">_Atomic（C11）</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#文件输入-输出"><span class="level-left"><span class="level-item">5</span><span class="level-item">文件输入/输出</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#标准I-O"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">标准I/O</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#exit"><span class="level-left"><span class="level-item">5.1.1</span><span class="level-item">exit()</span></span></a></li><li><a class="level is-mobile" href="#fopen"><span class="level-left"><span class="level-item">5.1.2</span><span class="level-item">fopen()</span></span></a></li><li><a class="level is-mobile" href="#getc-和putc"><span class="level-left"><span class="level-item">5.1.3</span><span class="level-item">getc()和putc()</span></span></a></li><li><a class="level is-mobile" href="#fclose"><span class="level-left"><span class="level-item">5.1.4</span><span class="level-item">fclose()</span></span></a></li></ul></li><li><a class="level is-mobile" href="#文件I-O"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">文件I/O</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#fprintf-和fscanf"><span class="level-left"><span class="level-item">5.2.1</span><span class="level-item">fprintf()和fscanf()</span></span></a></li><li><a class="level is-mobile" href="#fgets-和fputs"><span class="level-left"><span class="level-item">5.2.2</span><span class="level-item">fgets()和fputs()</span></span></a></li></ul></li><li><a class="level is-mobile" href="#随机访问：fseek-和ftell"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">随机访问：fseek()和ftell()</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#fseek-和ftell"><span class="level-left"><span class="level-item">5.3.1</span><span class="level-item">fseek()和ftell()</span></span></a></li><li><a class="level is-mobile" href="#fgetpos-和fsetpos"><span class="level-left"><span class="level-item">5.3.2</span><span class="level-item">fgetpos()和fsetpos()</span></span></a></li></ul></li><li><a class="level is-mobile" href="#标准I-O的机理"><span class="level-left"><span class="level-item">5.4</span><span class="level-item">标准I/O的机理</span></span></a></li><li><a class="level is-mobile" href="#二进制I-O：fread-和fwrite"><span class="level-left"><span class="level-item">5.5</span><span class="level-item">二进制I/O：fread()和fwrite()</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#fwrite"><span class="level-left"><span class="level-item">5.5.1</span><span class="level-item">fwrite()</span></span></a></li><li><a class="level is-mobile" href="#fread"><span class="level-left"><span class="level-item">5.5.2</span><span class="level-item">fread()</span></span></a></li></ul></li></ul></li><li><a class="level is-mobile" href="#数据类型"><span class="level-left"><span class="level-item">6</span><span class="level-item">数据类型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#struct"><span class="level-left"><span class="level-item">6.1</span><span class="level-item">struct</span></span></a></li><li><a class="level is-mobile" href="#union"><span class="level-left"><span class="level-item">6.2</span><span class="level-item">union</span></span></a></li><li><a class="level is-mobile" href="#enum-enumerated-type"><span class="level-left"><span class="level-item">6.3</span><span class="level-item">enum (enumerated type)</span></span></a></li><li><a class="level is-mobile" href="#复杂的声明"><span class="level-left"><span class="level-item">6.4</span><span class="level-item">复杂的声明</span></span></a></li></ul></li><li><a class="level is-mobile" href="#C预处理器"><span class="level-left"><span class="level-item">7</span><span class="level-item">C预处理器</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#宏和函数的选择"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">宏和函数的选择</span></span></a></li><li><a class="level is-mobile" href="#泛型编程（C11）"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">泛型编程（C11）</span></span></a></li><li><a class="level is-mobile" href="#inline-function（C99）"><span class="level-left"><span class="level-item">7.3</span><span class="level-item">inline function（C99）</span></span></a></li><li><a class="level is-mobile" href="#Noreturn函数（C11）"><span class="level-left"><span class="level-item">7.4</span><span class="level-item">_Noreturn函数（C11）</span></span></a></li><li><a class="level is-mobile" href="#断言库"><span class="level-left"><span class="level-item">7.5</span><span class="level-item">断言库</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/C%E8%AF%AD%E8%A8%80/"><span class="level-start"><span class="level-item">C语言</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Linux/"><span class="level-start"><span class="level-item">Linux</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"><span class="level-start"><span class="level-item">图像处理</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/"><span class="level-start"><span class="level-item">嵌入式</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"><span class="level-start"><span class="level-item">开发工具</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"><span class="level-start"><span class="level-item">开发环境配置</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-04-27T01:43:40.000Z">2026-04-27</time></p><p class="title"><a href="/2026/04/27/2026-04-27-copy_proc/">打包程序和依赖库安装</a></p><p class="categories"><a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2026-04-23T12:14:58.000Z">2026-04-23</time></p><p class="title"><a href="/2026/04/23/2026-04-23-Zephyr/">Zephyr笔记</a></p><p class="categories"><a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F/">嵌入式</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-31T07:33:50.000Z">2025-12-31</time></p><p class="title"><a href="/2025/12/31/2025-12-31-gh_pages/">GitHub Pages + Hexo创建博客</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-20T08:55:50.000Z">2025-12-20</time></p><p class="title"><a href="/2025/12/20/2025-12-20-vscode_format/">Visual Studio Code 自动格式化</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2025-12-20T07:18:04.000Z">2025-12-20</time></p><p class="title"><a href="/2025/12/20/2025-12-20-vscode_shortcut/">在右键菜单中添加Visual Studio Code</a></p><p class="categories"><a href="/categories/%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">开发环境配置</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2026/04/"><span class="level-start"><span class="level-item">四月 2026</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/12/"><span class="level-start"><span class="level-item">十二月 2025</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li><li><a class="level is-mobile" href="/archives/2025/03/"><span class="level-start"><span class="level-item">三月 2025</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2023/02/"><span class="level-start"><span class="level-item">二月 2023</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/08/"><span class="level-start"><span class="level-item">八月 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2019/12/"><span class="level-start"><span class="level-item">十二月 2019</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/Animedia_200712_sp1_OotsukaMai_Shana_vector_512.png" alt="命运的十字路口" height="28"></a><p class="is-size-7"><span>&copy; 2026 Shana-wen</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2019</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/Shana-wen/Shana-wen.github.io.git"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
