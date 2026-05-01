@@ -1,13 +1,17 @@
 ---
-title: Visual Studio Code 格式化
+title: Visual Studio Code 自动格式化
 date: 2025-12-20 16:55:50
 tags: VSCode
 categories: 开发环境配置
 toc: true
 excerpt: Visual Studio Code 格式化相关配置
 ---
-# 安装插件
-## Doxygen Documentation Generator
+#  VS Code 自动格式化
+
+## 安装拓展: 
+Doxygen Documentation Generator
+
+## 配置
 在Doxygen Documentation Generator设置中打开`settings.json`,添加以下配置：
 ```bash
 {

@@ -7,6 +7,7 @@ toc: true
 excerpt: 介绍 Real-ESRGAN（动漫插图/视频修复算法）
 ---
 # [Real-ESRGAN](https://github.com/xinntao/Real-ESRGAN.git)
+
 ## 动漫插图高清修复
 1. Command:
 ```bash
@@ -33,6 +34,7 @@ realesrgan-ncnn-vulkan.exe -i 输入路径 -o 输出路径 [选项]...
   -f 输出格式        输出图像格式(jpg/png/webp，默认根据扩展名确定为png)
   -v                 详细输出
 ```
+
 ## 动漫视频高清修复
 1. 使用 ffmpeg 从视频中提取帧，记得提前创建文件夹tmp_frames
 ```bash
